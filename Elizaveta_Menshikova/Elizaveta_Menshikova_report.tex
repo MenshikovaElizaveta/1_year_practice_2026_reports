@@ -170,9 +170,9 @@ python -m image_convolution.main input.png output.png --kernel box_blur --border
 
 \end{table}
 
-Авторская реализация медленнее OpenCV примерно в 1194--29800 раз и Pillow в 337--537 раз в зависимости от размера и режима изображения.
+Авторская реализация медленнее OpenCV примерно в 1194--29800 раз и Pillow в 337--537 раз в зависимости от размера и режима изображения (рис.~\ref{fig:color_performance}, \ref{fig:grayscale_performance}).
 
-При увеличении стороны изображения в 4 раза количество пикселей увеличивается в 16 раз. Время работы авторской реализации увеличивается примерно в 16 раз, что соответствует теоретической сложности алгоритма $O(height\times width)$ при фиксированном размере ядра.
+При увеличении стороны изображения в 4 раза количество пикселей увеличивается в 16 раз. Время работы авторской реализации увеличивается примерно в 16 раз, что соответствует теоретической сложности алгоритма $O(height\times width)$ при фиксированном размере ядра. Во сколько раз авторская реализации медленнее библиотечных показано на графике отношений (рис.~\ref{fig:speedup}).
 
 Полученные различия во времени выполнения авторской реализации и библиотечных решений являются статистически значимыми для всех рассмотренных размеров и режимов ($p < 0{,}05$).
 
@@ -190,5 +190,26 @@ python -m image_convolution.main input.png output.png --kernel box_blur --border
 \end{enumerate}
 
 Репозиторий с реализацией: \url{https://github.com/MenshikovaElizaveta/img-conv}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/color_performance.png}
+    \caption{Время свёртки для цветных изображений}
+    \label{fig:color_performance}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/grayscale_performance.png}
+    \caption{Время свёртки для чёрно-белых изображений}
+    \label{fig:grayscale_performance}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/speedup.png}
+    \caption{Отношение времени выполнения авторской реализации к библиотечным решениям}
+    \label{fig:speedup}
+\end{figure}
 
 \end{document}
